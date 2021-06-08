@@ -1,4 +1,4 @@
-![](./assets/banner.png)
+![](./banner.png)
 
 > An open source repository containing scripts to automate tasks.
 

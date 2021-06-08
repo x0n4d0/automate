@@ -1,8 +1,30 @@
 #!/bin/bash
-# --------------------------------------------
-#       *** BACKUP SCRIPT ***
-# --------------------------------------------
-chmod +x backup.sh
+
+# Uncomment the next line if running the script directly!
+# chmod +x backup.sh
+
+# =================================================================
+# This script is used to automate the backup of most important
+# files on my computer. These files are saved to my USB Stick or 
+# External HD. The directory will be zipped and sent to external
+# drive.
+#
+# - The script will go to each directory that has been defined;
+# - Each directory that has been defined will be compressed, 
+#   inserting a date: folder_-_YYYY-MM-DD.zip; 
+#   Example: Pictures_-_2020-07-03.zip
+# - Before, it will be checked in the directory if there is the 
+#   same file with the date of a previous backup. If it exists, 
+#   it will be deleted before copying the new file.
+# - Some directories will be compressed with password.
+# - Some directories will be listed in a text file. These are files 
+#   that are not that important and can be saved just for 
+#   information to save space and know what to download next, 
+#   such as: Music, Videos, Softwares...;
+#
+# $ backup --all
+# $ backup --docs
+# =================================================================
 
 TODAY_DATE="$(date +%y-%m-%d)"
 PATH_THIS_LOCAL="$(pwd)"
@@ -25,11 +47,15 @@ function backup() {
         clear; print-help-user-guide
       ;; 
       
-      "-all")
+      "--all")
 
       ;;
 
-      "-list")
+      "--list")
+
+      ;;
+      
+      "--docs")
 
       ;;
 
